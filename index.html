@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RandomPassword</title>
+</head>
+<body>
+    <h1 id="aaaa">Sua nova senha totalmente aleatória!</h1>
+    <div>    
+        <input type="number" id="minChar" name="minChar" min="8" value="8">
+        <button id="button" onclick="RandomPass(document.getElementById('minChar').value)">Get New Password</button>
+    </div>
+    <div>
+        <p id="randomPass"></p>
+    </div>
+</body>
+<script>
+function Random(max) {
+    return Math.floor(Math.random() * max);
+}
+
+function RandomPass(minChar) {
+    
+    const alphabets = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+    const symbols = ['!', '@', '#', '$', '%', '&', '*', '(', ')', '-', '=', '+', '/', '\''];
+
+    let password = '';
+    for (let i = 0; i < minChar; i++) {
+        var whichChar = Random(3);
+        var randomChar;
+        switch (whichChar) {
+            case 0: //ALPHABET
+            randomChar = Random(alphabets.length);
+                var upperLOWER = Random(2);
+                if (upperLOWER == 0) {
+                    var randomAlpha = alphabets[randomChar].toLowerCase();
+                } else {
+                    var randomAlpha = alphabets[randomChar].toUpperCase();
+                }
+                password += randomAlpha;
+                break;
+                case 1: //NUMBER
+                password += Random(10);
+                break;
+            case 2: //SYMBOL
+                randomChar = Random(symbols.length);
+                password += symbols[randomChar];
+                break;
+            }
+    }
+    document.getElementById('randomPass').innerText = password;
+}
+
+</script>
+</html>
