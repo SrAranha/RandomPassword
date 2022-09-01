@@ -4,18 +4,22 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>RandomPassword</title>
 </head>
-<body bgcolor="grey">
-    <h1 id="aaaa">Sua nova senha totalmente aleatória!</h1>
+<body>
+    <h1 id="aaaa">Your new password totally randomized!</h1>
     <div>    
         <input type="number" id="minChar" name="minChar" min="8" value="8">
         <button id="button" onclick="RandomPass(document.getElementById('minChar').value)">Get New Password</button>
     </div>
     <div>
-        <p id="randomPass"></p>
+        <h2>Your new password is: </h2>
+        <p class="randomPass" id="randomPass"></p>
     </div>
 </body>
+
+
 <script>
 function Random(max) {
     return Math.floor(Math.random() * max);
@@ -52,6 +56,5 @@ function RandomPass(minChar) {
     }
     document.getElementById('randomPass').innerText = password;
 }
-
 </script>
 </html>
