@@ -9,13 +9,17 @@
 </head>
 <body>
     <h1 id="aaaa">Your new password totally randomized!</h1>
-    <div>    
+    <div>
         <input type="number" id="minChar" name="minChar" min="8" value="8">
         <button id="button" onclick="RandomPass(document.getElementById('minChar').value)">Get New Password</button>
     </div>
     <div>
+        <input type="checkbox" name="symbols?" id="symbols?">
+        <label for="symbols?"><b>Should the password contain symbols?</b></label>
+    </div>
+    <div>
         <h2>Your new password is: </h2>
-        <p class="randomPass" id="randomPass"></p>
+        <p class="randomPass" id="randomPass"><b></b></p>
     </div>
 </body>
 
@@ -31,8 +35,12 @@ function RandomPass(minChar) {
     const symbols = ['!', '@', '#', '$', '%', '&', '*', '(', ')', '-', '=', '+', '/', '\''];
 
     let password = '';
+    let passPos = 2;
+    if (document.getElementById('symbols?').checked) {
+        passPos++;
+    }
     for (let i = 0; i < minChar; i++) {
-        var whichChar = Random(3);
+        var whichChar = Random(passPos);
         var randomChar;
         switch (whichChar) {
             case 0: //ALPHABET
@@ -45,7 +53,7 @@ function RandomPass(minChar) {
                 }
                 password += randomAlpha;
                 break;
-                case 1: //NUMBER
+            case 1: //NUMBER
                 password += Random(10);
                 break;
             case 2: //SYMBOL
