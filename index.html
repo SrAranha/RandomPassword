@@ -20,6 +20,7 @@
     <div>
         <h2>Your new password is: </h2>
         <p class="randomPass" id="randomPass"><b></b></p>
+        <button onclick="CopyPassword()">Copy password</button>
     </div>
 </body>
 
@@ -27,6 +28,12 @@
 <script>
 function Random(max) {
     return Math.floor(Math.random() * max);
+}
+
+function CopyPassword() {
+    var randomPass = document.getElementById("randomPass").innerText;
+    navigator.clipboard.writeText(randomPass);
+    alert(`Copied ${randomPass} to clipboard.`)
 }
 
 function RandomPass(minChar) {
