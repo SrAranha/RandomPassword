@@ -33,7 +33,6 @@ function Random(max) {
 function CopyPassword() {
     var randomPass = document.getElementById("randomPass").innerText;
     navigator.clipboard.writeText(randomPass);
-    alert(`Copied ${randomPass} to clipboard.`)
 }
 
 function RandomPass(minChar) {
